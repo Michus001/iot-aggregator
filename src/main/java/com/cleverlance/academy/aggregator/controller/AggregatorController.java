@@ -15,4 +15,5 @@ public class AggregatorController {
         return ResponseEntity.ok(new Identification("Moje meteostanice", 
                 new Address("Danci", "2556/6D", "Ricany"), new Person("Tomas", "Michalicka")));
     }
+    
 }
