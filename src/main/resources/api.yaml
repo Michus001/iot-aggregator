@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  description: |
+    TODO
+  version: "1.0.0"
+  title: IOT server
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/Michus001/test/1.0.0
+  - url: 'https://TODO'
+tags:
+  - name: TODO
+    description: TODO
+paths:
+  /sample:
+    post:
+      tags:
+        - TODO
+      summary: TODO
+      operationId: TODO
+      responses:
+        '400':
+          description: Invalid input
+      requestBody:
+        $ref: '#/components/requestBodies/TODO'
+    get:
+      tags:
+        - TODO
+      summary: TODO
+      description: TODO
+      operationId: TODO
+      parameters:
+        - name: status
+          in: query
+          description: Status values that need to be considered for filter
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TODO'
+        '400':
+          description: Invalid status value
+
+components:
+  schemas:
+    TODO:
+  requestBodies:
+    TODO:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TODO'
