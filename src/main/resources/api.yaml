@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: |
-    TODO
+    IOT server specification
   version: "1.0.0"
   title: IOT server
   termsOfService: 'http://swagger.io/terms/'
@@ -14,35 +14,35 @@ servers:
   # Added by API Auto Mocking Plugin
   - description: SwaggerHub API Auto Mocking
     url: https://virtserver.swaggerhub.com/Michus001/test/1.0.0
-  - url: 'https://TODO'
-tags:
-  - name: TODO
-    description: TODO
+  - url: 'https://localhost:8080'
 paths:
-  /sample:
+  /identification:
+    get:
+      summary: Metoda nacte identifikaci IOT serveru
+      operationId: getIdentification
+      responses: 
+        200:
+          description: OK response
+          content: 
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Identification'
+        500:
+          description: Service unavailable
+  /data:
     post:
-      tags:
-        - TODO
-      summary: TODO
-      operationId: TODO
+      summary: Metoda ulozi data
+      operationId: saveData
       responses:
+        200:
+          description: OK response
         '400':
           description: Invalid input
       requestBody:
-        $ref: '#/components/requestBodies/TODO'
+        $ref: '#/components/requestBodies/DataToStore'
     get:
-      tags:
-        - TODO
-      summary: TODO
-      description: TODO
-      operationId: TODO
-      parameters:
-        - name: status
-          in: query
-          description: Status values that need to be considered for filter
-          required: true
-          schema:
-            type: string
+      summary: Metoda nacte vsechny data
+      operationId: getData
       responses:
         '200':
           description: successful operation
@@ -51,16 +51,72 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/TODO'
+                  $ref: '#/components/schemas/MeteoData'
         '400':
           description: Invalid status value
 
 components:
   schemas:
-    TODO:
+    Owner:
+      type: object
+      required: 
+        - firstName
+        - lastName
+      properties: 
+        firstName:
+          type: string
+          example: Jan
+        lastName:
+          type: string
+          example: Novak
+    Address:
+      type: object
+      required: 
+        - street
+        - city
+      properties: 
+        street:
+          type: string
+          example: Hlavni
+        streetNumber:
+          type: string
+          example: 3D
+        city:
+          type: string
+          example: Praha
+    Identification: 
+      type: object
+      required: 
+        - name
+        - owner
+        - address
+      properties: 
+        name:
+          type: string
+        owner:
+          $ref: '#/components/schemas/Owner'
+        address:
+          $ref: '#/components/schemas/Address'
+    MeteoData:
+      type: object
+      required: 
+        - humidity
+        - temperature
+        - light
+        - pressure
+      properties: 
+        humidity:
+          type: number
+        temperature:
+          type: number
+          description: Tempretuire in C
+        light:
+          type: number
+        pressure:
+          type: number
   requestBodies:
-    TODO:
+    DataToStore:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TODO'
+            $ref: '#/components/schemas/MeteoData'
