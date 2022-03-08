@@ -1,0 +1,115 @@
+openapi: 3.0.0
+info:
+  description: |
+    IOT server aggregator specification
+  version: "1.0.0"
+  title: IOT server
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/Michus001/test/1.0.0
+  - url: 'https://localhost:8080'
+paths:
+  /identification:
+    post: 
+      summary: Metoda ulozi meteostanici
+      operationId: saveIdentification
+      requestBody: 
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Identification'
+      responses: 
+        200:
+          description: Identification saved.
+    get:
+      summary: Metoda vrati identifikace vsech zaregistrovanych IOT serveru
+      operationId: getIdentifications
+      responses: 
+        200:
+          description: OK response
+          content: 
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Identifications'
+        500:
+          description: Service unavailable
+components:
+  schemas:
+    Owner:
+      type: object
+      required: 
+        - firstName
+        - lastName
+        - email
+      properties: 
+        firstName:
+          type: string
+          example: Jan
+        lastName:
+          type: string
+          example: Novak
+        email:
+          type: string
+          example: jan@novak.cz
+    Address:
+      type: object
+      required: 
+        - street
+        - city
+      properties: 
+        street:
+          type: string
+          example: Hlavni
+        streetNumber:
+          type: string
+          example: 3D
+        city:
+          type: string
+          example: Praha
+    Identifications:
+      type: array
+      items: 
+        $ref: '#/components/schemas/Identification'
+    Identification: 
+      type: object
+      required: 
+        - name
+        - owner
+        - address
+      properties: 
+        name:
+          type: string
+        owner:
+          $ref: '#/components/schemas/Owner'
+        address:
+          $ref: '#/components/schemas/Address'
+    MeteoData:
+      type: object
+      required: 
+        - humidity
+        - temperature
+        - light
+        - pressure
+      properties: 
+        humidity:
+          type: number
+        temperature:
+          type: number
+          description: Tempretuire in C
+        light:
+          type: number
+        pressure:
+          type: number
+  requestBodies:
+    DataToStore:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MeteoData'

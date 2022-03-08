@@ -11,7 +11,7 @@ import org.mapstruct.factory.Mappers;
 class IdentificationMapperTest {
 
     private static final IdentificationMapper MAPPER = Mappers.getMapper(IdentificationMapper.class);
-    
+    /*
     @Test
     void toIdentification() {
         Identification identification = new Identification("Moje meteostanice", new Address("Hlavni", "3D", "Praha"), new Person("Jan", "Novak", "jan.novak@seznam.cz", "MALE"));
@@ -25,5 +25,5 @@ class IdentificationMapperTest {
         assertEquals("Jan", converted.getOwner().getFirstName());
         assertEquals("Novak", converted.getOwner().getLastName());
 
-    }
+    }*/
 }
