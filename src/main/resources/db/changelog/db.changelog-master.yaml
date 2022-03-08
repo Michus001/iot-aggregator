@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      author: tomas
+      id: 1
+      changes:
+        - createSequence:
+            sequenceName: hibernate_sequence
+            startValue: 1
+            incrementBy: 1
+        - createTable: 
+            tableName: identification
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: city
+                  type: varchar(64)
+              - column:
+                  name: street
+                  type: varchar(64)
+              - column:
+                  name: number
+                  type: varchar(16)
+              - column:
+                  name: name
+                  type: varchar(64)
+              - column:
+                  name: first_name
+                  type: varchar(64)
+              - column:
+                  name: last_name
+                  type: varchar(64)
+              - column:
+                  name: gender
+                  type: varchar(8)
+              - column:
+                  name: mail
+                  type: varchar(64)
+          
+        
