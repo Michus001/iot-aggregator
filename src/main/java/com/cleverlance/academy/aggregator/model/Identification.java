@@ -25,4 +25,6 @@ public class Identification {
     @Embedded
     private Person owner;
     
+    private String url;
+    
 }

@@ -18,7 +18,7 @@ public class Person {
     
     @Email
     @Column(name = "mail")
-    private String mail;
+    private String email;
     
     @Gender
     @Column(name = "gender")
