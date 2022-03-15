@@ -36,8 +36,8 @@ public class IdentificationController implements IdentificationApi {
     @Override
     public ResponseEntity<List<Identification>> getIdentifications() {
         List<com.cleverlance.academy.aggregator.model.Identification> identification = this.identificationService.getIdentification();
-        this.defaultApi.getApiClient().setBasePath("https://tofu-iot-server.herokuapp.com");
-        this.defaultApi.getIdentification();
+        //this.defaultApi.getApiClient().setBasePath("https://tofu-iot-server.herokuapp.com");
+        //this.defaultApi.getIdentification();
         return ResponseEntity.ok(identificationMapper.toIdentifications(identification));
     }
 }
