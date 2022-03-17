@@ -25,4 +25,7 @@ public class Identification {
     @Embedded
     private Person owner;
     
+    @Column(name = "url")
+    private String url;
+    
 }

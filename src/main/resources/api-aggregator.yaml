@@ -31,6 +31,17 @@ paths:
     get:
       summary: Metoda vrati identifikace vsech zaregistrovanych IOT serveru
       operationId: getIdentifications
+      parameters:
+        - name: pageSize
+          in: query
+          schema: 
+            type: integer
+          required: true
+        - name: pageNumber
+          in: query
+          schema: 
+            type: integer
+          required: true
       responses: 
         200:
           description: OK response
@@ -83,6 +94,7 @@ components:
         - name
         - owner
         - address
+        - url
       properties: 
         name:
           type: string
@@ -90,6 +102,9 @@ components:
           $ref: '#/components/schemas/Owner'
         address:
           $ref: '#/components/schemas/Address'
+        url:
+          type: string
+          example: https://sarka-prod-iot-server.herokuapp.com
     MeteoData:
       type: object
       required: 

@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @RestController
@@ -25,7 +27,8 @@ public class AggregatorController {
     public AggregatorController(PersonService personService) {
         this.personService = personService;
     }
-
+    
+    
     @PostMapping("/server")
     public ResponseEntity<Void> saveServer(@RequestBody Identification identification) {
         log.info("Server identification: {}", identification);

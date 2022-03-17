@@ -41,5 +41,14 @@ databaseChangeLog:
               - column:
                   name: mail
                   type: varchar(64)
-          
+  - changeSet:
+      author: tomas
+      id: 2
+      changes:
+        - addColumn:
+            tableName: identification
+            columns:
+              - column:
+                  name: url
+                  type: varchar(128)
         
