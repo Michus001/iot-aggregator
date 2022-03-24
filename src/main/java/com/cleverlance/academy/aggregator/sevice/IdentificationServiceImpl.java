@@ -27,7 +27,7 @@ public class IdentificationServiceImpl implements IdentificationService {
         this.clientIdentificationMapper = clientIdentificationMapper;
     }
 
-    @Cacheable("identification")
+    //@Cacheable("identification")
     @Override
     public List<Identification> getIdentification(Integer pageSize, Integer pageNumber) {
         Page<Identification> result = this.identificationRepository.findAll(PageRequest.of(pageNumber, pageSize));
